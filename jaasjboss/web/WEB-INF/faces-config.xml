@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+    <application>
+    	<message-bundle>
+    		jaas.jboss.i18n.mensagensDeValidacao
+    	</message-bundle>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>			
+		</locale-config>
+		<resource-bundle>
+			<base-name>
+				jaas.jboss.i18n.mensagens
+			</base-name>
+			<var>msg</var>
+		</resource-bundle>
+		<view-handler>
+	      com.sun.facelets.FaceletViewHandler
+	    </view-handler> 
+	</application>
+
+	<managed-bean>
+		<managed-bean-name>cidadeBean</managed-bean-name>
+		<managed-bean-class>jaas.jboss.presentation.CidadeMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>gerenciaCidades</from-outcome>
+			<to-view-id>/restrito/gerenciaCidades.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>		
+	</navigation-rule>
+
+
+</faces-config>

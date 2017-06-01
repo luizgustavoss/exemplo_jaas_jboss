@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:a4j="http://richfaces.org/a4j"
+        xmlns:rich="http://richfaces.org/rich">
+        
+<ui:composition template="../template/template.xhtml">
+
+	<ui:define name="formulario">		
+					
+		<a4j:form id="formCidades">
+			<div>					
+				<center>
+					<rich:messages id="globalMessage" showDetail="true" showSummary="true" 
+						errorClass="errorClass" warnClass="warnClass" infoClass="infoClass" 
+						layout="table" />
+				</center>					
+			</div>	
+			
+			<p/>
+			
+			<fieldset>
+				<legend><h:outputText value="#{msg.manutencaoCidades}"/></legend>
+				<table width="100%">
+					<tr>
+						<td width="15%">
+							<h:outputLabel for="cmbEstado" id="lblEstado" value="#{msg.lblEstado}"/>
+						</td>
+						<td>
+							<h:selectOneMenu id="cmbEstado"	value="#{cidadeBean.estado}"
+								onchange="submit()" immediate="true" reRender="tblCidade"
+								valueChangeListener="#{cidadeBean.cmbEstadoChange}">								 
+								<f:selectItems value="#{cidadeBean.itensEstados}"/>
+							</h:selectOneMenu>
+							<h:graphicImage style="border: 0;" url="../imagens/obrigatorio.png"/>
+						</td>						
+					</tr>
+					<tr>
+						<td width="15%">		
+							<h:inputHidden value="#{cidadeBean.codigo}" id="hdnCodigoCidade"/>				 
+							<h:outputLabel for="txtNomeCidade" id="lblCidade" value="#{msg.lblCidade}"/>
+						</td>
+						<td>
+							<h:inputText id="txtNomeCidade" required="true"
+							value="#{cidadeBean.nome}" size="80" maxlength="80"
+							disabled="#{!cidadeBean.habilitarModificacoes}">
+								<f:validateLength minimum="3" maximum="80"/>
+							</h:inputText>
+							<h:graphicImage style="border: 0;" url="../imagens/obrigatorio.png"/>
+						</td>						
+					</tr>
+					<tr>
+						<td colspan="2">
+							<rich:spacer height="15"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table width="100%">
+								<tr>
+									<td width="50%" class="mensagemObrigatorio">
+										<h:graphicImage style="border: 0;" url="../imagens/obrigatorio.png"/>
+										<h:outputText value="#{msg.msgCamposObrigatorios}"/>
+									</td>
+									<td class="barraDeBotoes">
+										<a4j:commandButton value="#{msg.btnNovo}" id="btnNovo" 
+											disabled="#{cidadeBean.habilitarModificacoes}"
+											immediate="true" 
+											action="#{cidadeBean.novo}" styleClass="botao"/>
+											
+										<a4j:commandButton value="#{msg.btnSalvar}" id="btnSalvar" 
+											disabled="#{!cidadeBean.habilitarModificacoes}" 
+											action="#{cidadeBean.salvar}" styleClass="botao"/>
+											
+										<a4j:commandButton value="#{msg.btnCancelar}" id="btnCancelar" 
+											disabled="#{!cidadeBean.habilitarModificacoes}" 
+											immediate="true" 
+											action="#{cidadeBean.cancelar}" styleClass="botao"/>
+									</td>							
+								</tr>
+							</table>
+						</td>						
+					</tr>
+				</table>
+			</fieldset>
+			
+			<rich:dataTable width="100%" 
+				id="tblCidade" var="cidade" 
+         		value="#{cidadeBean.cidades}"         		
+				rowClasses="grid1,grid2" rows="10">
+				
+				<f:facet name="header">									            		
+					<rich:columnGroup>		
+		
+						<rich:column width="50%">
+							<h:outputText value="#{msg.clnNome}"/>
+						</rich:column>
+		
+						<rich:column width="30%">
+							<h:outputText value="#{msg.clnEstado}"/>
+						</rich:column>
+						
+						<rich:column width="10%">
+							<h:outputText value="#{msg.clnAlterar}"/>
+						</rich:column>
+						
+						<rich:column width="10%">
+							<h:outputText value="#{msg.clnExcluir}"/>
+						</rich:column>						
+						
+					</rich:columnGroup>
+				</f:facet>
+		
+				<rich:column>
+					<h:outputText value="#{cidade.nome}"/>
+				</rich:column>
+				
+				<rich:column>
+					<h:outputText value="#{cidade.estado}"/>
+				</rich:column>
+		
+				<rich:column >          	
+					<a4j:commandLink 									 
+						action="#{cidadeBean.alterar}" immediate="true" 
+							reRender="globalMessages">
+						<center>									
+							<h:graphicImage style="border: 0;" url="../imagens/editar.gif"/>
+           				</center>
+           				<f:param value="#{cidade.codigo}" name="codigo"/>
+           			</a4j:commandLink>
+				</rich:column>
+				
+				<rich:column>
+					<a4j:commandLink
+						action="#{cidadeBean.excluir}" immediate="true"
+							reRender="globalMessages">
+						<center>
+							<h:graphicImage style="border: 0;" url="../imagens/excluir.gif"/>
+           				</center>
+           				<f:param value="#{cidade.codigo}" name="codigo"/>
+           			</a4j:commandLink>		
+				</rich:column>
+										
+			</rich:dataTable>							
+			
+			<rich:spacer height="15"/>
+			
+			<rich:datascroller id="sclTblCidade" 
+				for="tblCidade" maxPages="10" 
+				renderIfSinglePage="false" rendered="true"/>	
+			
+			
+		</a4j:form>			
+	</ui:define>
+
+</ui:composition>
+
+</html>

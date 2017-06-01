@@ -1,0 +1,146 @@
+@CHARSET "ISO-8859-1";
+
+body{
+  background-color: #fff;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+}
+
+h3{
+  color: #4e4ec6;	
+}
+
+#pagebody{
+  width: 800px;
+  margin: 0 auto;
+  text-align: left;	
+  background-color: #fff;	
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+}
+
+#cabecalho{
+  height: 50px;	
+  width: 800px;  
+  background-color: #1D507D;
+  color: #3b5998;
+  font-weight: bold;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  line-height: 100px;
+  border: 1px solid #C0C0C0;
+}
+
+
+#formulario{
+  width: 800px; 
+  float: right;
+  height: 500px; 
+  padding-top: 10px;
+  padding-left: 2px;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+}
+
+#mensagens{
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #E6DB55;
+  background-color: #FFFFE0;
+  color: #000;
+}
+
+#menu a, #menu a:hover, #menu a:visited{    
+  text-decoration: none;
+  color: #3b5998; 
+}
+
+a, a:hover, a:visited{    
+  text-decoration: none;
+  color: #3b5998; 
+}
+
+input{
+  border: 1px #C0C0C0 solid;	
+}
+
+
+label{
+  color: #6F6F6F;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  display: inline;
+}
+
+.mensagemObrigatorio{
+  color: red;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  display: inline;
+}
+
+.errorClass{
+  color: #e72222;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.warnClass{
+  color: #e72222;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.infoClass{
+  color: #4534ec;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+	
+.barraDeBotoes{
+  text-align: right;
+  background-color: #fff;
+}
+
+.botao{
+  text-align: center;
+  color: #fff;
+  height: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  width: 100px;
+}
+
+select{
+  border: 1px solid #C0C0C0;
+}
+
+input{
+  border: 1px solid #C0C0C0;
+}
+
+fieldset{
+  border: 1px solid #C0C0C0;	
+  background-color: #fff;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+legend{
+  color: #3b5998;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+table{
+  collapse: collapse;
+}
+
+td{
+  padding: 0;
+}
